@@ -12,10 +12,13 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r include=FALSE}
 require(tidyverse)
 require(tigerstats)
-davisdata <- read.csv(file="UCDavis.csv")
+davisdata <- read.csv(file="UCDavis.csv") 
+require(knitr)
 ```
 ## Our Goal is to answer this question Is there a difference between the alcohol consumed between the row
 ## you choose to sit in??
+$H_0$: There is a difference in where you are seated and the amount of alcohol you consume.  
+$H_A$: There is No difference in the location of where you are seated and the amount of alcohol you consume.
 
 ## Now with ggplot - first select the basic data
 
@@ -36,9 +39,21 @@ basicCN + geom_boxplot(notch=TRUE,outlier.color = "red") + stat_boxplot(geom ='e
 ```
 
 ## Numerical Summarys 
+```{r}
+favstats(alcohol~Seat,data=davisdata)
+```
+```{r}
+favstats(alcohol~Seat,data=davisdata)
+```
 
 ## Inferential Tests
 
-## Conclusions
+```{r}
+#we specify the margins starting at the bottom and proceeding clockwise - thus 8.7 is the left side margin to hold the names of the factors
+par(mar = c(3, 8.7, 2, 2))
+plot(alcohol)
+```
+## Conclusions  
+We reject the null Hypothesis because the P value is less than 0.05, and go for the alternative Hypothesis instead. There is no difference in where you are seated and the amount of alcohol you consume.
 
 
