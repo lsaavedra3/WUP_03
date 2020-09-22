@@ -21,11 +21,17 @@ $H_0$: There is a difference in where you are seated and the amount of alcohol y
 $H_A$: There is No difference in the location of where you are seated and the amount of alcohol you consume.
 
 ## Now with ggplot - first select the basic data
+```{r}
+basicCN <- ggplot(davisdata,aes(x=Seat,y=alcohol))
+
+basicCN + geom_boxplot()
+```
+
+## Now add in boxplot
 
 ```{r}
-basicCN <- ggplot(davisdata,aes(y=alcohol,x=Seat))
+boxplot(alcohol~Seat,data=davisdata)
 ```
-## Now add in boxplot
 
 ```{r}
 basicCN + geom_boxplot()
@@ -35,24 +41,29 @@ basicCN + geom_boxplot()
 ### get fancy  
 
 ```{r}
-basicCN + geom_boxplot(notch=TRUE,outlier.color = "red") + stat_boxplot(geom ='errorbar') + labs(title="Fancy notch boxplot \n with 2 lines")
+basicCN + geom_boxplot(notch=FALSE,outlier.color = "red") + stat_boxplot(geom ='errorbar') + labs(title="Fancy notch boxplot \n with 2 lines")
 ```
 
 ## Numerical Summarys 
-```{r}
-favstats(alcohol~Seat,data=davisdata)
-```
+
 ```{r}
 favstats(alcohol~Seat,data=davisdata)
 ```
 
 ## Inferential Tests
-
+```{r}
+model1 <- aov(alcohol~Seat,data=davisdata)
+summary.aov(model1)
+```
 ```{r}
 #we specify the margins starting at the bottom and proceeding clockwise - thus 8.7 is the left side margin to hold the names of the factors
 par(mar = c(3, 8.7, 2, 2))
-plot(alcohol)
+plot(TukeyHSD(model1),las=2)
 ```
+
+
+
+
 ## Conclusions  
 We reject the null Hypothesis because the P value is less than 0.05, and go for the alternative Hypothesis instead. There is no difference in where you are seated and the amount of alcohol you consume.
 
