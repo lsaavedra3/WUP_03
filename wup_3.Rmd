@@ -17,14 +17,13 @@ require(knitr)
 ```
 ## Our Goal is to answer this question Is there a difference between the alcohol consumed between the row
 ## you choose to sit in??
-$H_0$: There is a difference in where you are seated and the amount of alcohol you consume.  
-$H_A$: There is No difference in the location of where you are seated and the amount of alcohol you consume.
+$H_0$: There is no difference in where you are seated and the amount of alcohol you consume.  
+$H_A$: There is a difference in the location of where you are seated and the amount of alcohol you consume.
 
 ## Now with ggplot - first select the basic data
 ```{r}
 basicCN <- ggplot(davisdata,aes(x=Seat,y=alcohol))
 
-basicCN + geom_boxplot()
 ```
 
 ## Now add in boxplot
@@ -62,9 +61,12 @@ plot(TukeyHSD(model1),las=2)
 ```
 
 
+In this Turkey plot, we can see that the people who seat in the back consume more alcohol than the people who sit in the middle- front sections. It also shows that there is not really much of a difference between the people who sit in the front and the middle, BUT if you compare just front and back, people in the back consume way more alcohol.
 
 
 ## Conclusions  
-We reject the null Hypothesis because the P value is less than 0.05, and go for the alternative Hypothesis instead. There is no difference in where you are seated and the amount of alcohol you consume.
+We reject the null Hypothesis because the P value is less than     0.05, and go for the alternative Hypothesis instead which   states that  there is a difference in where you are seated and   the amount of alcohol you consume. Because the box plots and   even when we got fancy we see that people in the back consume   more alcohol than the people in the middle and front.    
+
+
 
 
