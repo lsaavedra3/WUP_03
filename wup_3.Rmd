@@ -40,7 +40,7 @@ basicCN + geom_boxplot()
 ### get fancy  
 
 ```{r}
-basicCN + geom_boxplot(notch=FALSE,outlier.color = "red") + stat_boxplot(geom ='errorbar') + labs(title="Fancy notch boxplot \n with 2 lines")
+basicCN + geom_boxplot(notch=TRUE,outlier.color = "red") + stat_boxplot(geom ='errorbar') + labs(title="Fancy notch boxplot \n with 2 lines")
 ```
 
 ## Numerical Summarys 
@@ -65,7 +65,11 @@ In this Turkey plot, we can see that the people who seat in the back consume mor
 
 
 ## Conclusions  
-We reject the null Hypothesis because the P value is less than     0.05, and go for the alternative Hypothesis instead which   states that  there is a difference in where you are seated and   the amount of alcohol you consume. Because the box plots and   even when we got fancy we see that people in the back consume   more alcohol than the people in the middle and front.    
+We reject the null Hypothesis because the P value is less than     0.05, and go for the alternative Hypothesis instead which   states that  there is a difference in where you are seated and   the amount of alcohol you consume. Because the box plots and   even when we got fancy we see that people in the back consume   more alcohol than the people in the middle and front.     
+
+
+
+  
 
 
 
